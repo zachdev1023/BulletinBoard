@@ -1,0 +1,31 @@
+{
+  "name": "bulletin-board",
+  "version": "1.0.0",
+  "description": "Simple Bulleting Board",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "keywords": [
+    "MongoDB",
+    "React.JS",
+    "Redux",
+    "Node.JS",
+    "Express.JS"
+  ],
+  "author": "Zirach Hangad",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "concurrently": "^7.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
