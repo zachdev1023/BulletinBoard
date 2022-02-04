@@ -1,4 +1,4 @@
-# BulletinBoard
+# Bulletin Board Directory Help
 
 Client Folder - React.js Files (Front End) <br>
 Models Folder - MongoDB Models (Post, Member, Comment) <br>
