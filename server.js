@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const members = require("./routes/api/members");
 const posts = require("./routes/api/posts");
@@ -23,6 +24,16 @@ mongoose
 // Use Routes
 app.use("/api/members", members);
 app.use("/api/posts", posts);
+
+//Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  //Set static Folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 
