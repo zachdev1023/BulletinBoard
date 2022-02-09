@@ -16,3 +16,13 @@
   opacity: 0.01;
   transition: opacity 777ms ease-in;
 }
+
+.btn-input {
+  background-color: transparent !important;
+  color: rgba(29, 29, 29, 0.726) !important;
+  border-color: transparent !important;
+}
+
+.btn-input:hover {
+  color: rgba(0, 0, 0) !important;
+}

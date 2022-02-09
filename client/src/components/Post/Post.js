@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPosts, deletePost } from "./PostActions";
 import PostModal from "./PostModal";
+import PostEditModal from "./PostEditModal";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+
+import { FaTrash } from "react-icons/fa";
 
 import {
   Container,
@@ -48,13 +51,24 @@ export class Post extends Component {
                         {subtitle}
                       </CardSubtitle>
                       <CardText>{post}</CardText>
-                      <Button
-                        style={{ float: "right" }}
-                        onClick={this.deletePost.bind(this, _id)}
-                        className="btn-danger btn-sm"
+                      <Container
+                        style={{ display: "flex", justifyContent: "right" }}
                       >
-                        Remove Post
-                      </Button>
+                        <Button
+                          className="btn-input"
+                          onClick={this.deletePost.bind(this, _id)}
+                          style={{ backgroundColor: "transparent" }}
+                        >
+                          <PostEditModal />
+                        </Button>
+                        <Button
+                          className="btn-input"
+                          onClick={this.deletePost.bind(this, _id)}
+                          style={{ backgroundColor: "transparent" }}
+                        >
+                          <FaTrash />
+                        </Button>
+                      </Container>
                     </CardBody>
                   </Card>
                 </Container>

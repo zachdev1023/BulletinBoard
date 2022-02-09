@@ -13,10 +13,12 @@
   },
   "keywords": [
     "MongoDB",
+    "Mongoose",
+    "Express.JS",
     "React.JS",
     "Redux",
     "Node.JS",
-    "Express.JS"
+    "Cloudinary"
   ],
   "author": "Zirach Hangad",
   "license": "ISC",
