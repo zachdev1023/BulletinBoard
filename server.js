@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const path = require("path");
 
 const members = require("./routes/api/members");
 const posts = require("./routes/api/posts");
+const upload = require("./routes/api/upload");
 
 const app = express();
 
@@ -24,15 +24,7 @@ mongoose
 // Use Routes
 app.use("/api/members", members);
 app.use("/api/posts", posts);
-
-app.post("/api/upload", async (req, res) => {
-  try {
-    const fileStr = req.body.data;
-    console.log(fileStr);
-  } catch (error) {
-    console.log(error);
-  }
-});
+app.use("/api/upload", upload);
 
 //Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
