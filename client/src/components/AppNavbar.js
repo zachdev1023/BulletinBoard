@@ -29,14 +29,19 @@ export class AppNavbar extends Component {
             <Collapse style={{ flexGrow: 0 }} isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="https://github.com/zachdev1023">
-                    Github
-                  </NavLink>
+                  <NavLink href="#">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="https://github.com/zachdev1023">
-                    Github
-                  </NavLink>
+                  <NavLink href="#">Chats</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Explore</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Interactions</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Profile</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="https://github.com/zachdev1023">

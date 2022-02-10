@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { cloudinary } = require("../../cloudinary");
+
 //Post Model
 const Post = require("../../models/Post");
 
@@ -14,17 +16,26 @@ router.get("/", (req, res) => {
 });
 
 //Create Posts
-router.post("/", (req, res) => {
-  const newPost = new Post({
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    post: req.body.post,
-  });
+router.post("/", async (req, res) => {
+  try {
+    const uploadResponse = await cloudinary.uploader.upload(req.body.imgURL, {
+      upload_preset: "post_images",
+    });
+    const newPost = new Post({
+      title: req.body.title,
+      subtitle: req.body.subtitle,
+      post: req.body.post,
+      imgURL: uploadResponse.url,
+    });
 
-  newPost
-    .save()
-    .then((post) => res.json(post))
-    .catch((err) => console.log(err));
+    newPost
+      .save()
+      .then((post) => res.json(post))
+      .catch((err) => console.log(err));
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Failed to upload..." });
+  }
 });
 
 // @Update members

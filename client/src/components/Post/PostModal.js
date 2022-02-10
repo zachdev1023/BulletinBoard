@@ -11,6 +11,7 @@ import {
   Input,
   Form,
   FormGroup,
+  Container,
 } from "reactstrap";
 
 export class PostModal extends Component {
@@ -60,6 +61,7 @@ export class PostModal extends Component {
       title: this.state.title,
       subtitle: this.state.subtitle,
       post: this.state.post,
+      imgURL: this.state.previewSource,
     };
     this.props.addPost(newPost);
     this.toggle();
@@ -85,13 +87,42 @@ export class PostModal extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mx-4">
         <Button className="mb-5" dark="true" onClick={this.toggle}>
           New Post
         </Button>
         <Modal toggle={this.toggle} isOpen={this.state.modal}>
           <ModalHeader toggle={this.toggle}>New Post</ModalHeader>
           <ModalBody>
+            <Form onSubmit={this.handleSubmit}>
+              <FormGroup>
+                <Container>
+                  {this.state.previewSource && (
+                    <img
+                      src={this.state.previewSource}
+                      alt="choosenImage"
+                      style={{ height: "150px" }}
+                    />
+                  )}
+                </Container>
+                <InputGroup>
+                  <Input
+                    name="Image"
+                    type="file"
+                    onChange={this.handleFileInputChange}
+                    value={this.fileInputState}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <Input
+                    className="btn btn-primary"
+                    dark="true"
+                    type="Submit"
+                    defaultValue="Upload"
+                  />
+                </InputGroup>
+              </FormGroup>
+            </Form>
             <InputGroup className="mb-3">
               <Input
                 name="Title"
@@ -129,33 +160,6 @@ export class PostModal extends Component {
                 Post
               </Button>
             </InputGroup>
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <InputGroup>
-                  <Input
-                    name="Image"
-                    type="file"
-                    onChange={this.handleFileInputChange}
-                    value={this.fileInputState}
-                  />
-                </InputGroup>
-                <InputGroup>
-                  <Input
-                    className="btn btn-primary"
-                    dark="true"
-                    type="Submit"
-                    defaultValue="Upload"
-                  />
-                </InputGroup>
-                {this.state.previewSource && (
-                  <img
-                    src={this.state.previewSource}
-                    alt="choosenImage"
-                    style={{ height: "150px" }}
-                  />
-                )}
-              </FormGroup>
-            </Form>
           </ModalBody>
         </Modal>
       </div>
