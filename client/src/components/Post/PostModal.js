@@ -9,6 +9,8 @@ import {
   ModalBody,
   InputGroup,
   Input,
+  Form,
+  FormGroup,
 } from "reactstrap";
 
 export class PostModal extends Component {
@@ -18,6 +20,22 @@ export class PostModal extends Component {
     title: "",
     subtitle: "",
     post: "",
+    fileInputState: "",
+    selectedFile: "",
+    previewSource: "",
+  };
+
+  handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    this.previewFile(file);
+  };
+
+  previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.setState({ previewSource: reader.result });
+    };
   };
 
   toggle = () => {
@@ -45,6 +63,24 @@ export class PostModal extends Component {
     };
     this.props.addPost(newPost);
     this.toggle();
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (!this.state.previewSource) return;
+    this.uploadImage(this.state.previewSource);
+  };
+
+  uploadImage = async (base64EncodedImage) => {
+    try {
+      await fetch("/api/upload", {
+        method: "POST",
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { "Content-type": "application/json" },
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   render() {
@@ -93,6 +129,33 @@ export class PostModal extends Component {
                 Post
               </Button>
             </InputGroup>
+            <Form onSubmit={this.handleSubmit}>
+              <FormGroup>
+                <InputGroup>
+                  <Input
+                    name="Image"
+                    type="file"
+                    onChange={this.handleFileInputChange}
+                    value={this.fileInputState}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <Input
+                    className="btn btn-primary"
+                    dark="true"
+                    type="Submit"
+                    defaultValue="Upload"
+                  />
+                </InputGroup>
+                {this.state.previewSource && (
+                  <img
+                    src={this.state.previewSource}
+                    alt="choosenImage"
+                    style={{ height: "150px" }}
+                  />
+                )}
+              </FormGroup>
+            </Form>
           </ModalBody>
         </Modal>
       </div>

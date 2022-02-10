@@ -46,6 +46,11 @@ export class Post extends Component {
                 <Container>
                   <Card className="mb-5">
                     <CardBody>
+                      <img
+                        alt={title}
+                        src="https://res.cloudinary.com/hangad-it-solutions/image/upload/v1644376519/sample.jpg"
+                        style={{ width: "100%", maxHeight: "300px" }}
+                      />
                       <CardTitle tag="h5">{title}</CardTitle>
                       <CardSubtitle className="mb-2 text-muted" tag="h6">
                         {subtitle}
@@ -54,13 +59,12 @@ export class Post extends Component {
                       <Container
                         style={{ display: "flex", justifyContent: "right" }}
                       >
-                        <Button
+                        <div
                           className="btn-input"
-                          onClick={this.deletePost.bind(this, _id)}
                           style={{ backgroundColor: "transparent" }}
                         >
                           <PostEditModal />
-                        </Button>
+                        </div>
                         <Button
                           className="btn-input"
                           onClick={this.deletePost.bind(this, _id)}

@@ -56,7 +56,7 @@ export class PostEditModal extends Component {
           <FaEdit />
         </Button>
         <Modal toggle={this.toggle} isOpen={this.state.modal}>
-          <ModalHeader toggle={this.toggle}>New Post</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Update Post</ModalHeader>
           <ModalBody>
             <InputGroup className="mb-3">
               <Input
