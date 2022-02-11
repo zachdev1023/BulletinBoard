@@ -69,87 +69,76 @@ export class PostModal extends Component {
     this.toggle();
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if (!this.state.previewSource) return;
-    this.uploadImage(this.state.previewSource);
-  };
-
-  uploadImage = async (base64EncodedImage) => {
-    try {
-      await fetch("/api/upload", {
-        method: "POST",
-        body: JSON.stringify({ data: base64EncodedImage }),
-        headers: { "Content-type": "application/json" },
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   render() {
     return (
       <>
-        <FaPlusCircle className="faIcon" onClick={this.toggle}>
-          New Post
-        </FaPlusCircle>
+        {/* modal trigger */}
+        <FaPlusCircle className="faIcon" onClick={this.toggle} />
+
+        {/* modal */}
         <Modal toggle={this.toggle} isOpen={this.state.modal}>
-          <ModalHeader toggle={this.toggle}>New Post</ModalHeader>
-          <ModalBody>
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Container>
-                  {this.state.previewSource && (
-                    <img
-                      src={this.state.previewSource}
-                      alt="choosenImage"
-                      style={{ height: "150px" }}
-                    />
-                  )}
-                </Container>
-                <InputGroup>
-                  <Input
-                    name="Image"
-                    accept="image/*"
-                    type="file"
-                    onChange={this.handleFileInputChange}
-                    value={this.fileInputState}
-                  />
-                </InputGroup>
-              </FormGroup>
-            </Form>
-            <InputGroup className="mb-3">
-              <Input
-                name="Title"
-                onChange={this.titleChange}
-                type="textarea"
-                rows="1"
-                placeholder="Title"
-              />
-            </InputGroup>
-            <InputGroup className="mb-3">
-              <Input
-                name="Subtitle"
-                onChange={this.subtitleChange}
-                type="textarea"
-                rows="3"
-                placeholder="Subtitle"
-              />
-            </InputGroup>
-            <InputGroup className="mb-3">
-              <Input
-                name="Post"
-                onChange={this.postChange}
-                type="textarea"
-                rows="5"
-                placeholder="Post"
-              />
-            </InputGroup>
+          <ModalHeader
+            style={{ background: "#056674", color: "white" }}
+            className="pacificoFont"
+            toggle={this.toggle}
+          >
+            Humati..
+          </ModalHeader>
+          <ModalBody className="p-0 m-0">
+            <Container className="p-0 m-0">
+              {this.state.previewSource && (
+                <img
+                  src={this.state.previewSource}
+                  alt="choosenImage"
+                  style={{ width: "100%" }}
+                />
+              )}
+            </Container>
+            <div className="p-5">
+              <InputGroup>
+                <Input
+                  className="mb-3"
+                  name="Image"
+                  accept="image/*"
+                  type="file"
+                  onChange={this.handleFileInputChange}
+                  value={this.fileInputState}
+                />
+              </InputGroup>
+              <InputGroup className="mb-3">
+                <Input
+                  name="Title"
+                  onChange={this.titleChange}
+                  type="textarea"
+                  rows="1"
+                  placeholder="Title"
+                />
+              </InputGroup>
+              <InputGroup className="mb-3">
+                <Input
+                  name="Subtitle"
+                  onChange={this.subtitleChange}
+                  type="textarea"
+                  rows="3"
+                  placeholder="Subtitle"
+                />
+              </InputGroup>
+              <InputGroup className="mb-3">
+                <Input
+                  name="Post"
+                  onChange={this.postChange}
+                  type="textarea"
+                  rows="5"
+                  placeholder="Post"
+                />
+              </InputGroup>
+            </div>
+
             <InputGroup>
               <Button
                 block
-                className="mb-5"
-                dark="true"
+                style={{ background: "#FF4B5C" }}
+                className="m-0 p-3"
                 onClick={this.onSubmit}
               >
                 Post

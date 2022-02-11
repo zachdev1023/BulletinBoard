@@ -24,18 +24,21 @@ export class AppNavbar extends Component {
 
   render() {
     return (
-      <div class="sticky-top">
-        <div style={{ background: "#212529", margin: 0 }}>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-            rel="stylesheet"
-          />
-
+      <div className="sticky-top">
+        <div style={{ background: "#056674", margin: 0 }}>
           <Container>
-            <Navbar color="dark" dark className="mb-0 mb-md-5">
-              <NavbarBrand className="navbarBrand" href="/">
+            <Navbar className="mb-0 mb-md-5">
+              <NavbarBrand
+                style={{ color: "#fff" }}
+                className="pacificoFont"
+                href="/"
+              >
+                <img
+                  src="https://res.cloudinary.com/hangad-it-solutions/image/upload/v1644559415/android-chrome-512x512_bls5pj.png"
+                  alt="icon"
+                  height={"20em"}
+                  style={{ verticalAlign: "top", marginRight: "5%" }}
+                />
                 Humati
               </NavbarBrand>
               <Nav className="ml-auto d-inline-flex ">
@@ -44,17 +47,17 @@ export class AppNavbar extends Component {
                     <FaHome className="faIcon" />
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink className="text-light" href="#">
                     <FaRegComments className="faIcon" />
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                   <NavLink className="text-light" href="#">
                     <PostModal />
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink className="text-light" href="#">
                     <FaCompass className="faIcon" />
                   </NavLink>
@@ -68,11 +71,12 @@ export class AppNavbar extends Component {
                   <NavLink className="text-light" href="#">
                     <FaUser className="faIcon" />
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                   <NavLink
                     className="text-light"
                     href="https://github.com/zachdev1023"
+                    target={"_blank"}
                   >
                     <FaGithub className="faIcon" />
                   </NavLink>

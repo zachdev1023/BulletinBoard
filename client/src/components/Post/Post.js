@@ -38,7 +38,7 @@ export class Post extends Component {
   render() {
     const { posts } = this.props.post;
     return (
-      <Container className="col-12 col-sm-4 offset-sm-4  mx-0 px-0 mx-md-auto px-md-auto">
+      <Container className="col-12 col-md-4 offset-md-4  mx-0 px-0 mx-md-auto px-md-auto">
         <ListGroup>
           <TransitionGroup>
             {posts.map(({ _id, title, subtitle, post, imgURL }) => (
@@ -80,7 +80,7 @@ export class Post extends Component {
                           className="btn-input"
                           style={{ backgroundColor: "transparent" }}
                         >
-                          <PostEditModal />
+                          {/* <PostEditModal /> */}
                         </div>
                         <Button
                           className="btn-input"

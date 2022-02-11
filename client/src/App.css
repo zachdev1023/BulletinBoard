@@ -31,6 +31,10 @@
   color: #ffd369;
 }
 
-.navbarBrand {
+.pacificoFont {
   font-family: "Pacifico", cursive;
+}
+
+body {
+  background: #e0ece4;
 }
