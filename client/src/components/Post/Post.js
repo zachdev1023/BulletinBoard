@@ -38,26 +38,27 @@ export class Post extends Component {
   render() {
     const { posts } = this.props.post;
     return (
-      <div className="row mx-0">
-        <Container className="col-12 col-sm-4 offset-sm-3 order-last order-md-first mx-0 px-0">
-          <ListGroup>
-            <TransitionGroup>
-              {posts.map(({ _id, title, subtitle, post, imgURL }) => (
-                <CSSTransition key={_id} timeout={777} classNames="fade">
-                  <Container className="mx-0 px-0">
-                    <Card className="mb-5 px-0 px-md-5 mx-0 mx-md-5">
-                      <CardBody className="p-0">
-                        {imgURL ? (
-                          <img
-                            alt={title}
-                            src={imgURL}
-                            style={{ width: "100%" }}
-                            crop="scale"
-                          />
-                        ) : (
-                          <></>
-                        )}
-                        <div className="px-3 py-1">
+      <Container className="col-12 col-sm-4 offset-sm-4  mx-0 px-0 mx-md-auto px-md-auto">
+        <ListGroup>
+          <TransitionGroup>
+            {posts.map(({ _id, title, subtitle, post, imgURL }) => (
+              <CSSTransition key={_id} timeout={777} classNames="fade">
+                <Container className="mx-0 px-0">
+                  <Card className="mb-3">
+                    <CardBody className="p-0">
+                      {imgURL ? (
+                        <img
+                          className="p-0 m-0"
+                          alt={title}
+                          src={imgURL}
+                          style={{ width: "100%" }}
+                          crop="scale"
+                        />
+                      ) : (
+                        <></>
+                      )}
+                      <div className="px-3 py-1">
+                        <div className="mb-5 px-0  mx-0 mx-md-2">
                           <CardTitle className="mt-3" tag="h5">
                             {title}
                           </CardTitle>
@@ -66,38 +67,37 @@ export class Post extends Component {
                           </CardSubtitle>
                           <CardText className="my-3">{post}</CardText>
                         </div>
-                        <Container
-                          className="border-top px-1"
-                          style={{ display: "flex", justifyContent: "right" }}
+                      </div>
+                      <Container
+                        className="border-top px-1"
+                        style={{
+                          display: "flex",
+                          justifyContent: "right",
+                          background: "#00000005",
+                        }}
+                      >
+                        <div
+                          className="btn-input"
+                          style={{ backgroundColor: "transparent" }}
                         >
-                          <div
-                            className="btn-input"
-                            style={{ backgroundColor: "transparent" }}
-                          >
-                            <PostEditModal />
-                          </div>
-                          <Button
-                            className="btn-input"
-                            onClick={this.deletePost.bind(this, _id)}
-                            style={{ backgroundColor: "transparent" }}
-                          >
-                            <FaTrash />
-                          </Button>
-                        </Container>
-                      </CardBody>
-                    </Card>
-                  </Container>
-                </CSSTransition>
-              ))}
-            </TransitionGroup>
-          </ListGroup>
-        </Container>
-
-        <Container className=" d-none d-md-block col-12 px-5 px-sm-0 col-sm-2 order-md-last order-first ">
-          <PostModal />
-          <Sidebar />
-        </Container>
-      </div>
+                          <PostEditModal />
+                        </div>
+                        <Button
+                          className="btn-input"
+                          onClick={this.deletePost.bind(this, _id)}
+                          style={{ backgroundColor: "transparent" }}
+                        >
+                          <FaTrash />
+                        </Button>
+                      </Container>
+                    </CardBody>
+                  </Card>
+                </Container>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        </ListGroup>
+      </Container>
     );
   }
 }

@@ -19,14 +19,18 @@
 
 .btn-input {
   background-color: transparent !important;
-  color: rgba(29, 29, 29, 0.726) !important;
+  color: #afafaf !important;
   border-color: transparent !important;
 }
 
 .btn-input:hover {
-  color: rgba(0, 0, 0) !important;
+  color: #393e46 !important;
 }
 
 .faIcon:hover {
-  color: rgba(255, 255, 255, 0.671);
+  color: #ffd369;
+}
+
+.navbarBrand {
+  font-family: "Pacifico", cursive;
 }

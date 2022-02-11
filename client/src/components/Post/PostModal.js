@@ -14,6 +14,8 @@ import {
   Container,
 } from "reactstrap";
 
+import { FaPlusCircle } from "react-icons/fa";
+
 export class PostModal extends Component {
   state = {
     id: "",
@@ -87,10 +89,10 @@ export class PostModal extends Component {
 
   render() {
     return (
-      <div className="mx-4">
-        <Button className="mb-5" dark="true" onClick={this.toggle}>
+      <>
+        <FaPlusCircle className="faIcon" onClick={this.toggle}>
           New Post
-        </Button>
+        </FaPlusCircle>
         <Modal toggle={this.toggle} isOpen={this.state.modal}>
           <ModalHeader toggle={this.toggle}>New Post</ModalHeader>
           <ModalBody>
@@ -108,17 +110,10 @@ export class PostModal extends Component {
                 <InputGroup>
                   <Input
                     name="Image"
+                    accept="image/*"
                     type="file"
                     onChange={this.handleFileInputChange}
                     value={this.fileInputState}
-                  />
-                </InputGroup>
-                <InputGroup>
-                  <Input
-                    className="btn btn-primary"
-                    dark="true"
-                    type="Submit"
-                    defaultValue="Upload"
                   />
                 </InputGroup>
               </FormGroup>
@@ -162,7 +157,7 @@ export class PostModal extends Component {
             </InputGroup>
           </ModalBody>
         </Modal>
-      </div>
+      </>
     );
   }
 }
