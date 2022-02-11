@@ -38,33 +38,36 @@ export class Post extends Component {
   render() {
     const { posts } = this.props.post;
     return (
-      <div className="row">
-        <Container className="col-12 col-sm-4 offset-sm-3 order-last order-md-first ">
+      <div className="row mx-0">
+        <Container className="col-12 col-sm-4 offset-sm-3 order-last order-md-first mx-0 px-0">
           <ListGroup>
             <TransitionGroup>
               {posts.map(({ _id, title, subtitle, post, imgURL }) => (
                 <CSSTransition key={_id} timeout={777} classNames="fade">
-                  <Container>
-                    <Card className="mb-5">
-                      <CardBody style={{ padding: "2em" }}>
+                  <Container className="mx-0 px-0">
+                    <Card className="mb-5 px-0 px-md-5 mx-0 mx-md-5">
+                      <CardBody className="p-0">
                         {imgURL ? (
                           <img
                             alt={title}
                             src={imgURL}
                             style={{ width: "100%" }}
+                            crop="scale"
                           />
                         ) : (
                           <></>
                         )}
-
-                        <CardTitle className="mt-3" tag="h5">
-                          {title}
-                        </CardTitle>
-                        <CardSubtitle className="mb-2 text-muted" tag="h6">
-                          {subtitle}
-                        </CardSubtitle>
-                        <CardText className="mt-3">{post}</CardText>
+                        <div className="px-3 py-1">
+                          <CardTitle className="mt-3" tag="h5">
+                            {title}
+                          </CardTitle>
+                          <CardSubtitle className="mb-2 text-muted" tag="h6">
+                            {subtitle}
+                          </CardSubtitle>
+                          <CardText className="my-3">{post}</CardText>
+                        </div>
                         <Container
+                          className="border-top px-1"
                           style={{ display: "flex", justifyContent: "right" }}
                         >
                           <div
@@ -90,7 +93,7 @@ export class Post extends Component {
           </ListGroup>
         </Container>
 
-        <Container className=" col-12 px-5 px-sm-0 col-sm-2 order-md-last order-first ">
+        <Container className=" d-none d-md-block col-12 px-5 px-sm-0 col-sm-2 order-md-last order-first ">
           <PostModal />
           <Sidebar />
         </Container>
