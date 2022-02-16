@@ -38,3 +38,12 @@
 body {
   background: #e0ece4;
 }
+
+.faImage {
+  cursor: pointer;
+  color:  rgba(29, 29, 29, 0.473)
+}
+
+.faImage:hover {
+  color: rgba(29, 29, 29, 0.678)
+}

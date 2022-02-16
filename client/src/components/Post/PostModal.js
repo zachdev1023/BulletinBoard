@@ -15,6 +15,7 @@ import {
 } from "reactstrap";
 
 import { FaPlusCircle } from "react-icons/fa";
+import { RiImageAddLine } from "react-icons/ri";
 
 export class PostModal extends Component {
   state = {
@@ -69,6 +70,10 @@ export class PostModal extends Component {
     this.toggle();
   };
 
+  triggerInputViaImage = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     return (
       <>
@@ -96,7 +101,11 @@ export class PostModal extends Component {
             </Container>
             <div className="p-5">
               <InputGroup>
+                <label htmlFor="file-input">
+                  <RiImageAddLine className="faImage" size={"100%"} />
+                </label>
                 <Input
+                  id="file-input"
                   className="mb-3"
                   name="Image"
                   accept="image/*"
