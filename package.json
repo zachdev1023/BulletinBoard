@@ -19,7 +19,8 @@
     "React-Strap",
     "Redux",
     "Node.JS",
-    "Cloudinary"
+    "Cloudinary",
+    "SweetALert2"
   ],
   "author": "Zirach Hangad",
   "license": "ISC",

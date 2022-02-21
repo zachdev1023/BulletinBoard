@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { addPost } from "./PostActions";
 import { connect } from "react-redux";
+import Swal from "sweetalert2";
 
 import {
   Button,
@@ -66,12 +67,21 @@ export class PostModal extends Component {
       post: this.state.post,
       imgURL: this.state.previewSource,
     };
-    this.props.addPost(newPost);
+    try {
+      this.props.addPost(newPost);
+      Swal.fire(
+        "Post Added!",
+        "Your post will now show up on the feed!",
+        "success"
+      );
+    } catch (error) {}
+
     this.toggle();
   };
 
   triggerInputViaImage = (e) => {
     e.preventDefault();
+    document.getElementById("fileInput").click();
   };
 
   render() {
@@ -101,11 +111,13 @@ export class PostModal extends Component {
             </Container>
             <div className="p-5">
               <InputGroup>
-                <label htmlFor="file-input">
-                  <RiImageAddLine className="faImage" size={"100%"} />
-                </label>
+                <RiImageAddLine
+                  onClick={this.triggerInputViaImage}
+                  className="faImage"
+                  size={"100%"}
+                />
                 <Input
-                  id="file-input"
+                  id="fileInput"
                   className="mb-3"
                   name="Image"
                   accept="image/*"
