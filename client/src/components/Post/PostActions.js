@@ -15,12 +15,14 @@ export const getPosts = () => (dispatch) => {
 };
 
 export const addPost = (post) => (dispatch) => {
+  dispatch(setPostLoading());
   axios
     .post("api/posts", post)
     .then((res) => dispatch({ type: ADD_POST, payload: res.data }));
 };
 
 export const deletePost = (id) => (dispatch) => {
+  dispatch(setPostLoading());
   axios
     .delete(`api/posts/${id}`)
     .then((res) => dispatch({ type: DELETE_POST, payload: id }));

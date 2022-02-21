@@ -111,11 +111,6 @@ export class PostModal extends Component {
             </Container>
             <div className="p-5">
               <InputGroup>
-                <RiImageAddLine
-                  onClick={this.triggerInputViaImage}
-                  className="faImage"
-                  size={"100%"}
-                />
                 <Input
                   id="fileInput"
                   className="mb-3"
